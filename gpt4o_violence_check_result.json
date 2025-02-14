@@ -1,0 +1,7 @@
+{
+    "text": "그는 칼로 사람을 찔렀습니다.",
+    "gpt4o_response": {
+        "violent": false,
+        "reason": "GPT-4o 응답 파싱 오류: Invalid JSON format from GPT-4o"
+    }
+}
