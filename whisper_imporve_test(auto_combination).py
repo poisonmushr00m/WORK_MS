@@ -22,7 +22,7 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # 로컬 비디오 파일 경로 (수정 필요)
-video_path = "video_data/30일.mp4"  # 예시 경로
+video_path = "ideo_data/베테랑.mp4"  # 예시 경로
 
 ########################################
 # 1. 음원 분리 및 Whisper API 파이프라인 #
