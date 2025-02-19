@@ -22,7 +22,7 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # 로컬 비디오 파일 경로 (수정 필요)
-video_path = "ideo_data/베테랑.mp4"  # 예시 경로
+video_path = "video_data/아수라.mp4"  # 예시 경로
 
 ########################################
 # 1. 음원 분리 및 Whisper API 파이프라인 #
@@ -315,38 +315,38 @@ if __name__ == '__main__':
     #         gc.collect()
     #         time.sleep(1)
 
-    # 다음 단계: 민감도를 3으로 실행
-    vad_sensitivities = [3]
-    frame_durations = [30]              # ms
-    padding_durations = [200, 250, 300]     # ms
-    silence_durations = [200, 250, 300]     # ms
-    print("\n>>> VAD 민감도 3 조합 실행 시작 <<<")
-    for vad_sensitivity, frame_duration, padding_duration, silence_duration in itertools.product(
-        vad_sensitivities, frame_durations, padding_durations, silence_durations):
+    # # 다음 단계: 민감도를 3으로 실행
+    # vad_sensitivities = [3]
+    # frame_durations = [20, 30]              # ms
+    # padding_durations = [200, 250, 300]     # ms
+    # silence_durations = [200, 250, 300]     # ms
+    # print("\n>>> VAD 민감도 3 조합 실행 시작 <<<")
+    # for vad_sensitivity, frame_duration, padding_duration, silence_duration in itertools.product(
+    #     vad_sensitivities, frame_durations, padding_durations, silence_durations):
         
-        print("\n=======================================")
-        print(f"테스트 조합: VAD 민감도={vad_sensitivity}, 프레임={frame_duration}ms, 패딩={padding_duration}ms, 무음삽입={silence_duration}ms")
-        try:
-            process_video(
-                video_path,
-                frame_duration_ms=frame_duration,
-                padding_duration_ms=padding_duration,
-                vad_sensitivity=vad_sensitivity,
-                silence_duration_ms=silence_duration,
-                language='ko'
-            )
-        except Exception as e:
-            print(f"조합 실행 중 오류 발생: {e}")
-        finally:
-            gc.collect()
-            time.sleep(1)
+    #     print("\n=======================================")
+    #     print(f"테스트 조합: VAD 민감도={vad_sensitivity}, 프레임={frame_duration}ms, 패딩={padding_duration}ms, 무음삽입={silence_duration}ms")
+    #     try:
+    #         process_video(
+    #             video_path,
+    #             frame_duration_ms=frame_duration,
+    #             padding_duration_ms=padding_duration,
+    #             vad_sensitivity=vad_sensitivity,
+    #             silence_duration_ms=silence_duration,
+    #             language='ko'
+    #         )
+    #     except Exception as e:
+    #         print(f"조합 실행 중 오류 발생: {e}")
+    #     finally:
+    #         gc.collect()
+    #         time.sleep(1)
 
     # 마지막 단계: 민감도를 0으로 실행
     vad_sensitivities = [0]
-    frame_durations = [20, 30]              # ms
-    padding_durations = [200, 250, 300]     # ms
+    frame_durations = [30]              # ms
+    padding_durations = [300]     # ms
     silence_durations = [200, 250, 300]     # ms
-    print("\n>>> VAD 민감도 3 조합 실행 시작 <<<")
+    print("\n>>> VAD 민감도 0 조합 실행 시작 <<<")
     for vad_sensitivity, frame_duration, padding_duration, silence_duration in itertools.product(
         vad_sensitivities, frame_durations, padding_durations, silence_durations):
         
